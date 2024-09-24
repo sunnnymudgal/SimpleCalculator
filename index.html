@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,600&family=Montserrat&family=Poppins:ital,wght@0,200;0,400;0,700;1,700;1,800;1,900&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator">
+            <form onsubmit="return false;">
+                <div class="display">
+                    <input type="text" id="display" readonly>
+                </div>
+                <div>
+                    <input type="button" value="AC" onclick="document.getElementById('display').value = ''">
+                    <input type="button" value="DE" onclick="document.getElementById('display').value = document.getElementById('display').value.slice(0, -1)">
+                    <input type="button" value="." onclick="document.getElementById('display').value += '.'">
+                    <input type="button" value="/" onclick="document.getElementById('display').value += '/'">
+                </div>
+                <div>
+                    <input type="button" value="7" onclick="document.getElementById('display').value += '7'">
+                    <input type="button" value="8" onclick="document.getElementById('display').value += '8'">
+                    <input type="button" value="9" onclick="document.getElementById('display').value += '9'">
+                    <input type="button" value="*" onclick="document.getElementById('display').value += '*'">
+                </div>
+                <div>
+                    <input type="button" value="4" onclick="document.getElementById('display').value += '4'">
+                    <input type="button" value="5" onclick="document.getElementById('display').value += '5'">
+                    <input type="button" value="6" onclick="document.getElementById('display').value += '6'">
+                    <input type="button" value="-" onclick="document.getElementById('display').value += '-'">
+                </div>
+                <div>
+                    <input type="button" value="1" onclick="document.getElementById('display').value += '1'">
+                    <input type="button" value="2" onclick="document.getElementById('display').value += '2'">
+                    <input type="button" value="3" onclick="document.getElementById('display').value += '3'">
+                    <input type="button" value="+" onclick="document.getElementById('display').value += '+'">
+                </div>
+                <div>
+                    <input type="button" value="00" onclick="document.getElementById('display').value += '00'">
+                    <input type="button" value="0" onclick="document.getElementById('display').value += '0'">
+                    <input type="button" value="=" class="equal" onclick="calculate()">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>
